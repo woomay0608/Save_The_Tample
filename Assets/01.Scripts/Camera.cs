@@ -60,10 +60,4 @@ public class Camera : MonoBehaviour
         }
     }
 
-    private void MapEdge()
-    { 
-
-    }
-
-
 }

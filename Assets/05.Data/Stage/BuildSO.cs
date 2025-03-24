@@ -10,4 +10,5 @@ public class BuildSO : ScriptableObject
     public Sprite Face;
     public string Des;
     public string name;
+    public int CommondCount;
 }

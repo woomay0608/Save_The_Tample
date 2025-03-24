@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StageInfoManager : MonoBehaviour
@@ -7,6 +8,8 @@ public class StageInfoManager : MonoBehaviour
 
     private static StageInfoManager instance;
     public static StageInfoManager Instance { get { return instance; } set { instance = value; } }
+
+    [SerializeField] private ScrollContent scrollContent;
 
 
     private BuildSO buildSO;
@@ -34,6 +37,7 @@ public class StageInfoManager : MonoBehaviour
     public void SetBuild( BuildSO build)
     {
         buildSO = build;
+        scrollContent.Set();
     }
 
 

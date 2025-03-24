@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class IdleState : BaseState
 {
 
+    float IdleTime = 5f;
+    public IdleState(StateMachine stateMachine) : base(stateMachine)
+    {
+    }
+
     public override void Enter()
     {
         base.Enter();
-        if(stateMachine.friends == null)
-        {
-            Debug.Log("Friednsnull");
-        }
         stateMachine.friends.meshAgent.isStopped = true;
         StartAnimation("Idle");
+        //stateMachine.ChangeState(stateMachine.chasingState);
     }
 
     public override void Exit()
@@ -23,11 +26,18 @@ public class IdleState : BaseState
         StopAnimation("Idle");
     }
 
-
-    private IEnumerator WaittoChais()
+    public override void Update()
     {
-        yield return new WaitForSeconds(2f);
-        stateMachine.ChangeState(stateMachine.chasingState);
+        base.Update();
+        time += Time.deltaTime;
+        if(IdleTime > time)
+        {
+            time -= IdleTime;
+            stateMachine.ChangeState(stateMachine.chasingState);
+        }
     }
+
+
+
 
 }

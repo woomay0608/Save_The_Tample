@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Camera : MonoBehaviour
+public class CameraMove : MonoBehaviour
 {
     [SerializeField][Range(0f, 10f)] private float Sensitivity;
-    Camera camera;
-    Rigidbody rigidbody;
+    Camera cameras;
+    Rigidbody rigidbodys;
 
     Vector2 MoveDir;
 
     private void Awake()
     {
-        camera = GetComponentInChildren<Camera>();
-        rigidbody = GetComponent<Rigidbody>();
+        cameras = GetComponentInChildren<Camera>();
+        rigidbodys = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -34,7 +34,7 @@ public class Camera : MonoBehaviour
         
         Vector3 dir = -MoveDir.y * transform.right + MoveDir.x * transform.forward;
         dir *= Sensitivity;
-        rigidbody.velocity = dir;
+        GetComponent<Rigidbody>().velocity = dir;
         
     }
 

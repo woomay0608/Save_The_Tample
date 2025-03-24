@@ -5,6 +5,10 @@ using UnityEngine;
 public class AttackState : BaseState
 {
    
+    public AttackState(StateMachine stateMachine) : base(stateMachine)
+    {
+    }
+
     public override void Enter()
     {
         base.Enter();
@@ -14,7 +18,7 @@ public class AttackState : BaseState
     public override void Exit() 
     {
         base.Exit();
-        stateMachine.ChangeState(stateMachine.idleState);
+        //stateMachine.ChangeState(stateMachine.idleState);
     }
 
     public override void Update()
@@ -28,7 +32,7 @@ public class AttackState : BaseState
         float Dis = Vector3.Distance(stateMachine.friends.meshAgent.transform.position, stateMachine.friends.Target.transform.position);
         if(Dis < stateMachine.friends.Getfriends().AttackRange)
         {
-            float time = Time.deltaTime;
+            time += Time.deltaTime;
             if (stateMachine.friends.Getfriends().AttackCoolTime > time )
             {
                 time -= stateMachine.friends.Getfriends().AttackCoolTime;

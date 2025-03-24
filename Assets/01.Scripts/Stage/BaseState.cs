@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseState : MonoBehaviour, IState
+public class BaseState : IState
 {
 
     protected StateMachine stateMachine;
-    private void Awake()
+    protected float time;
+
+    public BaseState(StateMachine stateMachine)
     {
-        stateMachine = new StateMachine();
+        this.stateMachine = stateMachine;
     }
+
+
     public virtual void Enter()
     {
 
@@ -22,14 +26,11 @@ public class BaseState : MonoBehaviour, IState
 
     public virtual void Update()
     {
-        if (stateMachine.friends == null)
-        {
-            Debug.Log("Friednsnull");
-        }
-        if (stateMachine.friends.IsInRange)
-        {
-            stateMachine.ChangeState(stateMachine.attackState);
-        }
+        //if (stateMachine.friends.IsInRange)
+        //{
+        //    Debug.Log("AttackOn");
+        //    stateMachine.ChangeState(stateMachine.attackState);
+        //}
 
     }
 

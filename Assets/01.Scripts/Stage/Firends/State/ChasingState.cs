@@ -6,6 +6,11 @@ using UnityEngine.AI;
 public class ChasingState : BaseState
 {
 
+    float MoveCoolTime = 7f;
+    
+    public ChasingState(StateMachine stateMachine) : base(stateMachine)
+    {
+    }
 
     public override void Enter()
     {
@@ -13,17 +18,16 @@ public class ChasingState : BaseState
 
         stateMachine.friends.meshAgent.isStopped = false;
         stateMachine.friends.meshAgent.speed = stateMachine.friends.Getfriends().Speed;
-        StartCoroutine(WaitForSecond());
-
+        
         StartAnimation("Run");
     }
 
-    public override void Exit() 
-    { 
+    public override void Exit()
+    {
         base.Exit();
         StopAnimation("Run");
-  
-        
+
+
     }
 
 
@@ -31,32 +35,38 @@ public class ChasingState : BaseState
     {
         base.Update();
 
+        if(stateMachine.friends.IsInRange)
+        {
+            stateMachine.ChangeState(stateMachine.attackState);
+        }
+
+        time += Time.deltaTime;
+        if(time > MoveCoolTime) 
+        {
+            time -= MoveCoolTime;
+            Debug.Log("Go");
+            FindNewLocation();
+        }
+
     }
 
 
-    private IEnumerator WaitForSecond()
+
+
+    private void FindNewLocation()
     {
 
-        FindNewLocation();
-        yield return new WaitForSeconds(5f);
-        stateMachine.ChangeState(stateMachine.idleState);
-
-
-
-    }
-
-    private  void FindNewLocation()
-    {
-       
         NavMeshHit nav;
 
-        Vector3 vector = Random.onUnitSphere * 10f;
-       if(NavMesh.SamplePosition(vector, out nav, 10f, NavMesh.AllAreas)) 
+        Vector3 vector = new Vector3(Random.Range(-10f, 10f), stateMachine.friends.meshAgent.transform.position.y, Random.Range(-10f, 10f));
+        if (NavMesh.SamplePosition(vector, out nav, 10f, NavMesh.AllAreas))
         {
             stateMachine.friends.meshAgent.SetDestination(nav.position);
+
         }
-       else
+        else
         {
+
             stateMachine.friends.meshAgent.SetDestination(stateMachine.friends.meshAgent.transform.position);
         }
     }

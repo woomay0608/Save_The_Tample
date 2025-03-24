@@ -13,23 +13,23 @@ public class EnemyRadar : MonoBehaviour
         friends = GetComponentInParent<Friends>();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag != transform.tag)
-        {
 
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag != gameObject.tag)
+        {
             NavMeshPath navMeshPath = new NavMeshPath();
             if(NavMesh.CalculatePath(friends.transform.position, other.transform.position, NavMesh.AllAreas, navMeshPath))
             {
                 friends.Target = other.gameObject;
                 friends.IsInRange = true;
+                Debug.Log("EnemyFind");
             }
             else
             {
-                friends.IsInRange = false;
-            }
- 
-            
+                //friends.IsInRange = false;
+            }           
         }
         else
         {

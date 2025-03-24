@@ -27,15 +27,11 @@ public class StateMachine : MonoBehaviour
     private void Awake()
     {
         friends = GetComponent<Friends>();
+        idleState = new IdleState(this);
+        chasingState = new ChasingState(this);
+        attackState = new AttackState(this);
     }
 
-
-    public StateMachine()
-    {
-        idleState = new IdleState();
-        chasingState = new ChasingState();
-        attackState = new AttackState();
-    }
 
     public void StartSetstate(IState state)
     {

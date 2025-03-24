@@ -12,16 +12,13 @@ public class Friends : MonoBehaviour
     public bool IsInRange =false;
     public bool IsAttacking = false;
     private StateMachine stateMachine;
-    
-    
-
-    public NavMeshSurface surface;
+   
     [SerializeField]private FriendSo FriendsSo;
     
     private void Awake()
     {
-        stateMachine = new StateMachine();
-        animator = GetComponent<Animator>();
+        stateMachine = GetComponent<StateMachine>();
+        animator = GetComponentInChildren<Animator>();
         meshAgent = GetComponent<NavMeshAgent>();
     }
     private void Start()

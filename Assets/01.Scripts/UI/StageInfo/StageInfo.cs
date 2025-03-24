@@ -25,7 +25,7 @@ public class StageInfo : MonoBehaviour
     {
         if(StageInfoManager.Instance.GetBuild() != null)
         {
-            description.SetName(StageInfoManager.Instance.GetBuild().name);
+            description.SetName(StageInfoManager.Instance.GetBuild().BuildName);
             description.SetDes(StageInfoManager.Instance.GetBuild().Des);
             Face.sprite = StageInfoManager.Instance.GetBuild().Face;
         }else

@@ -17,25 +17,18 @@ public class EnemyRadar : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag != gameObject.tag)
+        if (other.CompareTag("Enemt"))
         {
-            NavMeshPath navMeshPath = new NavMeshPath();
-            if(NavMesh.CalculatePath(friends.transform.position, other.transform.position, NavMesh.AllAreas, navMeshPath))
-            {
-                friends.Target = other.gameObject;
-                friends.IsInRange = true;
-                Debug.Log("EnemyFind");
-            }
-            else
-            {
-                //friends.IsInRange = false;
-            }           
+            Debug.Log("Hi2");
+            friends.Target = other.gameObject;
+            friends.IsInRange = true;
         }
         else
         {
+            friends.Target = null;
             friends.IsInRange = false;
-            
         }
+     
     }
 
 }

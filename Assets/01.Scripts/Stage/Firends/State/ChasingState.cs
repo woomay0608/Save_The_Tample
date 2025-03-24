@@ -38,14 +38,15 @@ public class ChasingState : BaseState
         if(stateMachine.friends.IsInRange)
         {
             stateMachine.ChangeState(stateMachine.attackState);
+            return;
         }
 
         time += Time.deltaTime;
-        if(time > MoveCoolTime) 
+        if(time > MoveCoolTime && !stateMachine.friends.IsAttacking) 
         {
             time -= MoveCoolTime;
-            Debug.Log("Go");
             FindNewLocation();
+            Debug.Log("HI");
         }
 
     }

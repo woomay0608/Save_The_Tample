@@ -12,7 +12,15 @@ public class AttackState : BaseState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.friends.meshAgent.SetDestination(stateMachine.friends.Target.transform.position);
+        if (stateMachine.friends.Target != null)
+        {
+            stateMachine.friends.meshAgent.SetDestination(stateMachine.friends.Target.transform.position);
+            stateMachine.friends.transform.localEulerAngles = stateMachine.friends.Target.transform.position - stateMachine.friends.meshAgent.transform.position;
+        }
+        else
+        {
+            stateMachine.ChangeState(stateMachine.idleState);
+        }
     }
 
     public override void Exit() 
@@ -29,35 +37,45 @@ public class AttackState : BaseState
 
     private void Attack()
     {
-        float Dis = Vector3.Distance(stateMachine.friends.meshAgent.transform.position, stateMachine.friends.Target.transform.position);
-        if(Dis < stateMachine.friends.Getfriends().AttackRange)
+        if (stateMachine.friends.Target != null)
         {
-            time += Time.deltaTime;
-            if (stateMachine.friends.Getfriends().AttackCoolTime > time )
-            {
-                time -= stateMachine.friends.Getfriends().AttackCoolTime;
-                stateMachine.friends.IsAttacking = true;
-                StartAnimation("Attack");
-            }
-            else
-            {
-                stateMachine.friends.meshAgent.SetDestination(stateMachine.friends.Target.transform.position);
-                stateMachine.friends.IsAttacking = false;
-            }
+            float Dis = Vector3.Distance(stateMachine.friends.meshAgent.transform.position, stateMachine.friends.Target.transform.position);
             
-        }
-        else
-        {
-            if(stateMachine.friends.IsInRange)
+            if (Dis < stateMachine.friends.Getfriends().AttackRange)
             {
-                stateMachine.friends.meshAgent.SetDestination(stateMachine.friends.Target.transform.position);
-                stateMachine.friends.IsAttacking = false;
+                time += Time.deltaTime;
+                if (stateMachine.friends.Getfriends().AttackCoolTime < time)
+                {
+                    Debug.Log("Attack");
+                    stateMachine.friends.IsAttacking = true;
+                    time -= stateMachine.friends.Getfriends().AttackCoolTime;
+                    stateMachine.friends.meshAgent.isStopped = true;
+                    StartAnimation("Attack");
+
+                }
+                else
+                {
+                    stateMachine.friends.meshAgent.SetDestination(stateMachine.friends.Target.transform.position);
+                    stateMachine.friends.meshAgent.isStopped = false;
+                    Debug.Log("AttackTIme");
+                }
+
             }
             else
             {
-                stateMachine.ChangeState(stateMachine.idleState);
-                stateMachine.friends.IsAttacking = false;
+                if (stateMachine.friends.IsInRange)
+                {
+                    stateMachine.friends.meshAgent.SetDestination(stateMachine.friends.Target.transform.position);
+                }
+                else
+                {
+                    stateMachine.ChangeState(stateMachine.idleState);
+                }
             }
+        }else
+        {
+            stateMachine.friends.IsAttacking = false;
+            stateMachine.ChangeState(stateMachine.idleState);
         }
 
 

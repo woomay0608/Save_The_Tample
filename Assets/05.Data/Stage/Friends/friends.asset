@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: friends
   m_EditorClassIdentifier: Assembly-CSharp::FriendSo
   AttackRange: 3
-  AttackCoolTime: 1
+  AttackCoolTime: 5
   Speed: 5
   RunSpeed: 10
   Damage: 25

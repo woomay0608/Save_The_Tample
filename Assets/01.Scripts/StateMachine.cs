@@ -14,7 +14,7 @@ public interface IState
 
 public class StateMachine : MonoBehaviour
 {
-    IState curState;
+    public IState curState;
     public IdleState idleState;
     public ChasingState chasingState;
     public AttackState attackState;
@@ -46,6 +46,7 @@ public class StateMachine : MonoBehaviour
             curState = state;
             state.Enter();
         }
+        else { Debug.Log("CurrentIsnull"); }
     }
 
     public void Update()

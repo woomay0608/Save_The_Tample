@@ -17,8 +17,8 @@ public class HPbar : HUD
 
     protected override void Set()
     {
-        slider.value = PlayerDataManager.Instance.PlayerInstance.GetHealth() / 20;
-        Text.text = $"{PlayerDataManager.Instance.PlayerInstance.GetHealth()}/20";
+        slider.value = PlayerDataManager.Instance.PlayerInstance.Health / 20;
+        Text.text = $"{PlayerDataManager.Instance.PlayerInstance.Health}/20";
     }
 
    

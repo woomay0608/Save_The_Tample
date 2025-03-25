@@ -11,43 +11,14 @@ public class PlayerData
     public int Health;
 }
 
-public class PlayerDataInstance
-{
-    private PlayerData instance = new PlayerData();
 
-    public int GetMoney()
-    {
-        return instance.Money;
-    }
-    public int GetDiamond()
-    {
-        return instance.Diamond;
-    }
-    public int GetHealth()
-    {
-        return instance.Health;
-    }
-    public void SetMoney(int money) 
-    {
-        instance.Money = money;
-    }
-    public void SetDiamond(int diamond) 
-    {
-        instance.Diamond = diamond;
-    }
-    public void SetHealth(int health)
-    {
-        instance.Health = health;
-
-    }
-}
 
 
 
 
 public class PlayerDataManager : MonoBehaviour
 {
-    public PlayerDataInstance PlayerInstance;
+    public PlayerData PlayerInstance;
     public const string Key = "PlayerData";
 
     private static PlayerDataManager instance;
@@ -61,7 +32,7 @@ public class PlayerDataManager : MonoBehaviour
         {
             instance = this;
         }
-        else;
+        else
         {
             Destroy(gameObject);
         }
@@ -75,29 +46,32 @@ public class PlayerDataManager : MonoBehaviour
     {
         if(PlayerPrefs.HasKey(Key))
         {
-            PlayerInstance = JsonUtility.FromJson<PlayerDataInstance>(PlayerPrefs.GetString(Key));
+            string json = PlayerPrefs.GetString(Key);
+            Debug.Log(json);
+            PlayerInstance = JsonUtility.FromJson<PlayerData> (json);
             Debug.Log("LoadData");
+  
         }
         else
         {
-            PlayerInstance = new PlayerDataInstance();
-            PlayerInstance.SetHealth(20);
-            PlayerInstance.SetDiamond(0);
-            PlayerInstance.SetMoney(0);
-            SaveData();
+
+            PlayerInstance.Health = 20;
+            PlayerInstance.Money = 0;
+            PlayerInstance.Diamond = 0;
             Debug.Log("New Data");
-            string data = JsonUtility.ToJson(PlayerInstance);
-            PlayerPrefs.SetString(Key, data);
+            SaveData();
         }
     }
 
-    public PlayerDataInstance DataLoad()
+    public PlayerData DataLoad()
     {
         return PlayerInstance;
     }
 
     public void SaveData()
     {
+        string data = JsonUtility.ToJson(PlayerInstance);
+        PlayerPrefs.SetString(Key, data);
         PlayerPrefs.Save();
     }
 

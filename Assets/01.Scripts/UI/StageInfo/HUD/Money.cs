@@ -15,7 +15,7 @@ public class Money : HUD
 
     protected override void Set()
     {
-        text.text = PlayerDataManager.Instance.PlayerInstance.GetMoney().ToString();
+        text.text = PlayerDataManager.Instance.PlayerInstance.Money.ToString();
     }
 
 }

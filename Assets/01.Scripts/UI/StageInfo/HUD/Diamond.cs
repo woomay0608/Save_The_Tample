@@ -15,6 +15,6 @@ public class Diamond : HUD
 
     protected override void Set()
     {
-        text.text = PlayerDataManager.Instance.PlayerInstance.GetDiamond().ToString();
+        text.text = PlayerDataManager.Instance.PlayerInstance.Diamond.ToString();
     }
 }

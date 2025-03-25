@@ -17,18 +17,16 @@ public class EnemyRadar : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Enemt"))
+        if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Hi2");
             friends.Target = other.gameObject;
             friends.IsInRange = true;
         }
-        else
-        {
-            friends.Target = null;
-            friends.IsInRange = false;
-        }
-     
+      
     }
+
+
+
+
 
 }

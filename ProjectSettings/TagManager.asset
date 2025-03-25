@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemt
-  - Buliding
+  - Enemy
+  - Weapon
+  - OurFriend
   layers:
   - Default
   - TransparentFX

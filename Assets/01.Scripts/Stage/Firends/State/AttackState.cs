@@ -57,6 +57,10 @@ public class AttackState : BaseState
                 {
                     stateMachine.friends.meshAgent.SetDestination(stateMachine.friends.Target.transform.position);
                     stateMachine.friends.meshAgent.isStopped = false;
+                    stateMachine.friends.IsAttacking =false;
+
+                    StopAnimation("Attack");
+                    StartAnimation("Run");
                     Debug.Log("AttackTIme");
                 }
 
@@ -72,8 +76,10 @@ public class AttackState : BaseState
                     stateMachine.ChangeState(stateMachine.idleState);
                 }
             }
-        }else
+        }
+        else
         {
+            stateMachine.friends.IsInRange = false; 
             stateMachine.friends.IsAttacking = false;
             stateMachine.ChangeState(stateMachine.idleState);
         }

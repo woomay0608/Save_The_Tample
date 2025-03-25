@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: friends
   m_EditorClassIdentifier: Assembly-CSharp::FriendSo
-  AttackRange: 3
+  AttackRange: 1.5
   AttackCoolTime: 5
   Speed: 5
   RunSpeed: 10

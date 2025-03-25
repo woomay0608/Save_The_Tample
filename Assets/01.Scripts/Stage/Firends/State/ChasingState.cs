@@ -59,7 +59,7 @@ public class ChasingState : BaseState
 
         NavMeshHit nav;
 
-        Vector3 vector = new Vector3(Random.Range(-10f, 10f), stateMachine.friends.meshAgent.transform.position.y, Random.Range(-10f, 10f));
+        Vector3 vector = new Vector3(Random.Range(-15f, 15f), stateMachine.friends.meshAgent.transform.position.y, Random.Range(-15f, 15f));
         if (NavMesh.SamplePosition(vector, out nav, 10f, NavMesh.AllAreas))
         {
             stateMachine.friends.meshAgent.SetDestination(nav.position);

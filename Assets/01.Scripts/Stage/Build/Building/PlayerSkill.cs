@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TempleTree : Building
+public class PlayerSkill : Building
 {
     [SerializeField] private GameObject Friends;
     public override void SetDic()
@@ -10,8 +10,9 @@ public class TempleTree : Building
         base.SetDic();
         //bool IsLock, string Locktext, float LockMoney, float CoolTime, string CoolTimeText, bool IsCoolTime, string MethodName, Action action)
 
-        buildSO.DicCommand[buildSO.type].Add(new Command(false, string.Empty, 0, 0,false, "Info", Info));
+        buildSO.DicCommand[buildSO.type].Add(new Command(false, string.Empty, 0, 0, false, "Info", Info));
         buildSO.DicCommand[buildSO.type].Add(new Command(true, "500G", 500, 10, true, "Summon", FriendsInstantiate));
+
 
 
         //buildSO.DicCommand[buildSO.type].Add(new Command(false, string.Empty, 0, 0, string.Empty, false, "Info", Info));
@@ -38,22 +39,15 @@ public class TempleTree : Building
         };
 
         GameObject Prefabs = Instantiate(Friends);
-        Prefabs.transform.position = vector3[Random.Range(0,vector3.Length)];
+        Prefabs.transform.position = vector3[Random.Range(0, vector3.Length)];
     }
 
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
         }
     }
-
-
-
-
-
-
-
 }

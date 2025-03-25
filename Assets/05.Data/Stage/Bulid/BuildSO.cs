@@ -48,20 +48,22 @@ public class Command
     public float LockMoney;
     [Header("CoolTime")]
     public float Cooltime;
-    public string CoolTimeText;
+    public float CurCooltime;
     public bool IsCoolTime;
+    public bool IsCoolTimePassed;
 
     public string MethodName;
     public Action action;
 
 
-    public Command(bool IsLock, string Locktext, float LockMoney , float CoolTime, string CoolTimeText, bool IsCoolTime, string MethodName , Action action)
+    public Command(bool IsLock, string Locktext, float LockMoney , float CoolTime, bool IsCoolTime, string MethodName , Action action)
     {
         this.IsLock = IsLock;
         this.LockText = Locktext;
         this.LockMoney = LockMoney;
         Cooltime = CoolTime;
-        this.CoolTimeText = CoolTimeText;
+        CurCooltime = 0f;
+        IsCoolTimePassed = false;
         this.IsCoolTime = IsCoolTime;
         this.MethodName = MethodName;
         this.action = action;

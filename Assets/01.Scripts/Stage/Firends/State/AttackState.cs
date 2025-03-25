@@ -46,7 +46,7 @@ public class AttackState : BaseState
                 time += Time.deltaTime;
                 if (stateMachine.friends.Getfriends().AttackCoolTime < time)
                 {
-                    Debug.Log("Attack");
+                    //Debug.Log("Attack");
                     stateMachine.friends.IsAttacking = true;
                     time -= stateMachine.friends.Getfriends().AttackCoolTime;
                     stateMachine.friends.meshAgent.isStopped = true;
@@ -61,7 +61,7 @@ public class AttackState : BaseState
 
                     StopAnimation("Attack");
                     StartAnimation("Run");
-                    Debug.Log("AttackTIme");
+                    //Debug.Log("AttackTIme");
                 }
 
             }

@@ -29,7 +29,6 @@ public class Friends : MonoBehaviour
     private void Update()
     {
         stateMachine.Update();
-        Debug.Log(stateMachine.curState);
     }
 
 

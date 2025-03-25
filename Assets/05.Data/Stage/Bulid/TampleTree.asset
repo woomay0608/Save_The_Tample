@@ -15,5 +15,5 @@ MonoBehaviour:
   Face: {fileID: 21300000, guid: 2d74b50acb23e9846b5350fb785e5654, type: 3}
   Des: DefensThis
   BuildName: Tree
-  CommandCount: 5
+  CommandCount: 1
   type: 0

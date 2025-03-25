@@ -15,5 +15,5 @@ MonoBehaviour:
   Face: {fileID: 21300000, guid: 73b2f849aad200b4a9df741100165757, type: 3}
   Des: Shop
   BuildName: 
-  CommondCount: 3
+  CommandCount: 2
   type: 1

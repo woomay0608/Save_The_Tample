@@ -13,4 +13,9 @@ public class PlayerprefabsSetDown : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
     }
+    [MenuItem("Tool/°ñµå Ãß°¡")]
+    private static void Gold()
+    {
+        PlayerDataManager.Instance.PlayerInstance.Money += 5000;
+    }
 }

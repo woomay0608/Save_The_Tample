@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Face: {fileID: 21300000, guid: 3a9493a1b322b70488bf850a3c31e055, type: 3}
   Des: PlayerSkill
-  name: PlayerSkill
+  BuildName: 
   CommondCount: 5
+  type: 2

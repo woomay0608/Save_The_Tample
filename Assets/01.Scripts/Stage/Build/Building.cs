@@ -1,15 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
 
-public class Building : MonoBehaviour
+public  class Building : MonoBehaviour
 {
-    [SerializeField]private BuildSO buildSO;
+    [SerializeField]protected BuildSO buildSO;
 
+    private void Awake()
+    {
+        SetDic();
+    }
 
     private void OnMouseDown()
     {
         StageInfoManager.Instance.SetBuild(buildSO);
     }
+
+    public virtual void SetDic()
+    {
+        buildSO.DicCommand[buildSO.type] = new List<Command>();
+    }
+
+
 }

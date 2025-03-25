@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
 
     public void POPInstantiate(string Text, Action Yes, Action No = null)
     {
-        GameObject uIPOPup = Instantiate(uIPOPUP, FindFirstObjectByType<Canvas>().transform);
+        GameObject uIPOPup = Instantiate(uIPOPUP, GameObject.Find("Canvas").transform);
         uIPOPup.GetComponent<UIPOPUP>().SetUP(Text, Yes, No);   
     }
 

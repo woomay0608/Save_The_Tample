@@ -28,6 +28,7 @@ public class UIPOPUP : MonoBehaviour
 
     public void SetUP(string Text, Action Yes, Action No = null)
     {
+        transform.gameObject.SetActive(true);
         MethodCut();
 
         XButton.onClick.AddListener(Down);
@@ -43,13 +44,13 @@ public class UIPOPUP : MonoBehaviour
         YesButton.onClick.AddListener(() => { Yes(); });
         text.text = Text;
 
-        transform.gameObject.SetActive(true);
+
 
     }
 
     public void Down()
     {
-        transform.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     private void MethodCut()

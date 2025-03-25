@@ -47,6 +47,11 @@ public class Slot : MonoBehaviour
 
     public void Set(Command command)
     {
+
+        LockButton.onClick.RemoveAllListeners();
+        ActiveButton.onClick.RemoveAllListeners();
+        
+
         Lock.gameObject.SetActive(command.IsLock);
         Locktext.text = command.LockText;
         LockMoney = command.LockMoney;
@@ -68,6 +73,7 @@ public class Slot : MonoBehaviour
     }
 
 
+    
     public void LockOpen(Command command)
     {
         if(500f > LockMoney) 

@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        FriendsManager.Instance.ChangeFriends(1);
         FriendsManager.Instance.SetFriends(4);
     }
     public void GameStop() 

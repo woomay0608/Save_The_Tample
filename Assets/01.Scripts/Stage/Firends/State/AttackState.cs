@@ -16,6 +16,15 @@ public class AttackState : BaseState
         {
             stateMachine.friends.meshAgent.SetDestination(stateMachine.friends.Target.transform.position);
             stateMachine.friends.transform.localEulerAngles = stateMachine.friends.Target.transform.position - stateMachine.friends.meshAgent.transform.position;
+            if(stateMachine.friends.IsRange)
+            {
+                stateMachine.ChangeState(stateMachine.rangeAttackState);
+            }
+            else
+            {
+                stateMachine.ChangeState(stateMachine.meleeAttackState);
+            }
+
         }
         else
         {
@@ -32,13 +41,17 @@ public class AttackState : BaseState
     public override void Update()
     {
         base.Update();
-        Attack();
+        if (stateMachine.friends.Target == null)
+        {
+            stateMachine.ChangeState(stateMachine.chasingState);
+        }
+        else
+        {
+            Attack();
+        }
     }
 
     public virtual void Attack()
     {
-        
-
-
     }
 }

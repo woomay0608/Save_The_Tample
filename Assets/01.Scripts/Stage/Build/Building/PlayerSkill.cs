@@ -32,10 +32,17 @@ public class PlayerSkill : Building
     }
     private IEnumerator DamageUP()
     {
-        
-        FriendsManager.Instance.FriendsPrefabs.GetComponent<Friends>().Getfriends().Damage += 3;
+
+
+        foreach (var FSo in FriendsManager.Instance.FriendsPrefabsList)
+        {
+            FSo.GetComponent<Friends>().Getfriends().Damage += 3;
+        }
         yield return new WaitForSeconds(30f);
-        FriendsManager.Instance.FriendsPrefabs.GetComponent<Friends>().Getfriends().Damage -= 3;
+        foreach (var FSo in FriendsManager.Instance.FriendsPrefabsList)
+        {
+            FSo.GetComponent<Friends>().Getfriends().Damage -= 3;
+        }
     }
     private void SpeedUPSkill()
     {
@@ -45,26 +52,43 @@ public class PlayerSkill : Building
     private IEnumerator SpeedUP()
     {
 
-        FriendsManager.Instance.FriendsPrefabs.GetComponent<Friends>().Getfriends().Speed += 3;
+        foreach (var FSo in FriendsManager.Instance.FriendsPrefabsList)
+        {
+            FSo.GetComponent<Friends>().Getfriends().Speed += 3;
+        }
         yield return new WaitForSeconds(30f);
-        FriendsManager.Instance.FriendsPrefabs.GetComponent<Friends>().Getfriends().Speed -= 3;
+        foreach (var FSo in FriendsManager.Instance.FriendsPrefabsList)
+        {
+            FSo.GetComponent<Friends>().Getfriends().Speed -= 3;
+        }
     }
-    private void CoolTimeDownSkill()
+        private void CoolTimeDownSkill()
     {
         StartCoroutine(CoolTimeDonw());
 
     }
     private IEnumerator CoolTimeDonw()
     {
-        float Cooltime = FriendsManager.Instance.FriendsPrefabs.GetComponent<Friends>().Getfriends().AttackCoolTime;
-        FriendsManager.Instance.FriendsPrefabs.GetComponent<Friends>().Getfriends().AttackCoolTime -= 1;
-        if (FriendsManager.Instance.FriendsPrefabs.GetComponent<Friends>().Getfriends().AttackCoolTime <=0 )
+        float[] Cooltime = new float[FriendsManager.Instance.FriendsPrefabsList.Count];
+        int Index = 0;
+        foreach (var FSo in FriendsManager.Instance.FriendsPrefabsList)
         {
-            FriendsManager.Instance.FriendsPrefabs.GetComponent<Friends>().Getfriends().AttackCoolTime = 1;
+            Cooltime[Index] = FSo.GetComponent<Friends>().Getfriends().AttackCoolTime;
+            Index++;
+        }
+ 
+        foreach (var FSo in FriendsManager.Instance.FriendsPrefabsList)
+        {
+            FSo.GetComponent<Friends>().Getfriends().AttackCoolTime -= 1;
+            FSo.GetComponent<Friends>().Getfriends().AttackCoolTime = Mathf.Max(1f, FSo.GetComponent<Friends>().Getfriends().AttackCoolTime);
+        }
+        yield return new WaitForSeconds(30f);
+        Index = 0;
+        foreach (var FSo in FriendsManager.Instance.FriendsPrefabsList)
+        {
+            FSo.GetComponent<Friends>().Getfriends().AttackCoolTime = Cooltime[Index];
+            Index++;
 
         }
-
-        yield return new WaitForSeconds(30f);
-        FriendsManager.Instance.FriendsPrefabs.GetComponent<Friends>().Getfriends().AttackCoolTime += Cooltime;
     }
 }

@@ -18,6 +18,8 @@ public class StateMachine : MonoBehaviour
     public IdleState idleState;
     public ChasingState chasingState;
     public AttackState attackState;
+    public MeleeAttackState meleeAttackState;
+    public RangeAttackState rangeAttackState;
 
 
     public Friends friends;
@@ -30,6 +32,8 @@ public class StateMachine : MonoBehaviour
         idleState = new IdleState(this);
         chasingState = new ChasingState(this);
         attackState = new AttackState(this);
+        meleeAttackState = new MeleeAttackState(this);
+        rangeAttackState = new RangeAttackState(this);
     }
 
 

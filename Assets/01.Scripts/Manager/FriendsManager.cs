@@ -19,7 +19,7 @@ public class FriendsManager : MonoBehaviour
     }
 
 
-    public GameObject FriendsPrefabs;
+    public GameObject SummonFriendsPrefabs;
 
     public List<GameObject> FriendsPrefabsList;
     public List<Friends> Friends;
@@ -36,7 +36,7 @@ public class FriendsManager : MonoBehaviour
 
         for (int i = 0; i< Count; i++) 
         {
-            GameObject Prefabs = Instantiate(FriendsManager.Instance.FriendsPrefabs);
+            GameObject Prefabs = Instantiate(Instance.SummonFriendsPrefabs);
             Prefabs.transform.position = vector3[Random.Range(0, vector3.Length)];
         }
     }
@@ -44,7 +44,7 @@ public class FriendsManager : MonoBehaviour
 
     public void ChangeFriends(int Index)
     {
-        FriendsPrefabs = FriendsPrefabsList[Index];
+        SummonFriendsPrefabs = FriendsPrefabsList[Index];
     }
 
 }

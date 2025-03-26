@@ -30,7 +30,7 @@ public class IdleState : BaseState
     {
         base.Update();
         time += Time.deltaTime;
-        if(IdleTime > time)
+        if(IdleTime < time)
         {
             time -= IdleTime;
             stateMachine.ChangeState(stateMachine.chasingState);

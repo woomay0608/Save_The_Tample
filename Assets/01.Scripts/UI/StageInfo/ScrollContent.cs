@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class ScrollContent : MonoBehaviour
 {
-    [SerializeField] private GameObject SlotPrefab;
-    private List<GameObject> slots = new List<GameObject>();
+    [SerializeField] private GameObject CommandSlotPrefab;
+    [SerializeField] private GameObject EquipSlotPrefab;
+    private List<GameObject> CommandSlot = new List<GameObject>();
+    private List<GameObject> EquipSlot = new List<GameObject>();
 
-    private bool IsSetok =false;
+    private bool IsCommandSetOk =false;
+    private bool IsFriendsSetOk =false;
 
     private void Update()
     {
-        if (IsSetok)
+        if (IsCommandSetOk)
         {
             for (int i = 0; i < StageInfoManager.Instance.GetBuild().CommandCount; i++)
             {
-                slots[i].gameObject.GetComponent<Slot>().Set(StageInfoManager.Instance.GetBuild().DicCommand[StageInfoManager.Instance.GetBuild().type][i]);
-
+                CommandSlot[i].gameObject.GetComponent<Slot>().Set(StageInfoManager.Instance.GetBuild().DicCommand[StageInfoManager.Instance.GetBuild().type][i]);
+            }
+        }
+        if(IsFriendsSetOk)
+        {
+            for (int i = 0; i < EquipmentManager.Instance.GetEquipList().Count; i++)
+            {
+                EquipSlot[i].gameObject.GetComponent<EquipSlot>().Set(EquipmentManager.Instance.GetEquip(i));
             }
         }
         
@@ -24,43 +33,64 @@ public class ScrollContent : MonoBehaviour
     public void  Set()
     {
 
-        foreach(GameObject slot in slots)
+        foreach(GameObject slot in CommandSlot)
         {
             slot.SetActive(false);
         }
-        
+
+        foreach (GameObject slot in EquipSlot)
+        {
+            slot.SetActive(false);
+        }
+
 
         if (StageInfoManager.Instance.GetBuild() != null)
         {
+            IsFriendsSetOk = false;
 
-            if (StageInfoManager.Instance.GetBuild().CommandCount > slots.Count)
-            {
-
-                for (int i = 0; i < StageInfoManager.Instance.GetBuild().CommandCount; i++)
-                {
-                    slots.Add(Instantiate(SlotPrefab, transform));
-
-                }
-            }
-            else
+            if (StageInfoManager.Instance.GetBuild().CommandCount > CommandSlot.Count)
             {
                 for (int i = 0; i < StageInfoManager.Instance.GetBuild().CommandCount; i++)
                 {
-                    slots[i].gameObject.SetActive(true);
-    
+                    CommandSlot.Add(Instantiate(CommandSlotPrefab, transform));
                 }
+                foreach (GameObject slot in CommandSlot)
+                {
+                    slot.SetActive(false);
+                }
+            }
+            for (int i = 0; i < StageInfoManager.Instance.GetBuild().CommandCount; i++)
+            {
+                CommandSlot[i].gameObject.SetActive(true);
 
             }
+            IsCommandSetOk = true;
         }
 
-
-        for (int i = 0; i < StageInfoManager.Instance.GetBuild().CommandCount; i++)
+        if(StageInfoManager.Instance.GetFriend() != null)
         {
-            slots[i].gameObject.GetComponent<Slot>().Set(StageInfoManager.Instance.GetBuild().DicCommand[StageInfoManager.Instance.GetBuild().type][i]);
- 
-        }
+            IsCommandSetOk = false;
 
-        IsSetok = true;
+            if(EquipmentManager.Instance.GetEquipList().Count > EquipSlot.Count  )
+            {
+                for (int i = 0; i < EquipmentManager.Instance.GetEquipList().Count; i++)
+                {
+                    EquipSlot.Add(Instantiate(EquipSlotPrefab, transform));
+                }
+                foreach (GameObject slot in EquipSlot)
+                {
+                    slot.SetActive(false);
+                }
+            }
+            for (int i = 0; i < EquipmentManager.Instance.GetEquipList().Count; i++)
+            {
+                EquipSlot[i].gameObject.SetActive(true);
+
+            }
+
+            IsFriendsSetOk = true;
+        }
+ 
 
     }
 

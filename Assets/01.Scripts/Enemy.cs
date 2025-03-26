@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon"))
         {
-            Health -= 10f;
+            Health -= other.transform.GetComponentInParent<FriendsStat>().AllDamage;
             Death(other);
         }
     }

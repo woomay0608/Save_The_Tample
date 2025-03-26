@@ -17,7 +17,7 @@ public class ChasingState : BaseState
         base.Enter();
 
         stateMachine.friends.meshAgent.isStopped = false;
-        stateMachine.friends.meshAgent.speed = stateMachine.friends.Getfriends().Speed;
+        stateMachine.friends.meshAgent.speed = stateMachine.friends.GetfriendsStat().AllSpeed;
         
         StartAnimation("Run");
     }

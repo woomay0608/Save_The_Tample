@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 4748793795961703799}
   - component: {fileID: 3238000816127771285}
   - component: {fileID: 8117874956854227289}
+  - component: {fileID: 4454975335944185883}
   m_Layer: 0
   m_Name: Friends
   m_TagString: Player
@@ -258,7 +259,9 @@ MonoBehaviour:
   Target: {fileID: 0}
   IsInRange: 0
   IsAttacking: 0
+  equipList: []
   FriendsSo: {fileID: 11400000, guid: cb847acc8d509e346842bf7eaaedf557, type: 2}
+  FriendsStat: {fileID: 0}
 --- !u!195 &2278480005148422031
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -340,6 +343,21 @@ MonoBehaviour:
   initialIconRotation: 0
   clampIconInBorder: 1
   clampDistance: 100
+--- !u!114 &4454975335944185883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8024973910128287541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7451de043f0ce154eb02605f16ed5216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllAttackCoolTime: 0
+  AllSpeed: 0
+  AllDamage: 0
 --- !u!1 &9141361441392600143
 GameObject:
   m_ObjectHideFlags: 0

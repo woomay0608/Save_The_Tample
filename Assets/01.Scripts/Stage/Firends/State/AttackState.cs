@@ -44,7 +44,7 @@ public class AttackState : BaseState
             if (Dis < stateMachine.friends.Getfriends().AttackRange)
             {
                 time += Time.deltaTime;
-                if (stateMachine.friends.Getfriends().AttackCoolTime < time)
+                if (stateMachine.friends.GetfriendsStat().AllAttackCoolTime < time)
                 {
                     //Debug.Log("Attack");
                     stateMachine.friends.IsAttacking = true;

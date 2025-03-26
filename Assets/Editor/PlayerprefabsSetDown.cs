@@ -16,6 +16,11 @@ public class PlayerprefabsSetDown : MonoBehaviour
     [MenuItem("Tool/골드 추가")]
     private static void Gold()
     {
-        PlayerDataManager.Instance.PlayerInstance.Money += 5000;
+        PlayerDataManager.Instance.PlayerInstance.Money += 50000;
+    }
+    [MenuItem("Tool/다이아")]
+    private static void Dia()
+    {
+        PlayerDataManager.Instance.PlayerInstance.Diamond += 5000;
     }
 }

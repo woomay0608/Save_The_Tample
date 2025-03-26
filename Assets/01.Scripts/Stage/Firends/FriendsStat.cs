@@ -52,11 +52,9 @@ public class FriendsStat : MonoBehaviour
 
 
         AllAttackCoolTime = friends.Getfriends().AttackCoolTime - EquipCool;
-        if(AllAttackCoolTime < 0)
-        {
-            AllAttackCoolTime = 1;
-        }
-        AllDamage = friends.Getfriends().Damage - equipAttack;
+
+        AllAttackCoolTime = Mathf.Max(1, AllAttackCoolTime);
+        AllDamage = friends.Getfriends().Damage + equipAttack;
         AllSpeed = friends.Getfriends().Speed + equipSpeed;
 
 

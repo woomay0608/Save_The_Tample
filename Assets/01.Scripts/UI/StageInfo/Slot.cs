@@ -56,6 +56,7 @@ public class Slot : MonoBehaviour
         }
         else
         {
+            Locktext.color = new Color(1f, 240f / 255f, 0f);
             Locktext.text = command.LockText;
         }
 

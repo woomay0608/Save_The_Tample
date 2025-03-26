@@ -8,7 +8,20 @@ public class Bullet : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-
+            Destroy(gameObject);
         }
     }
+
+    private void Start()
+    {
+        StartCoroutine(Die());
+    }
+
+
+    private IEnumerator Die()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject );
+    }
+
 }

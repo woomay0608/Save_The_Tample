@@ -15,5 +15,5 @@ MonoBehaviour:
   Face: {fileID: 21300000, guid: 71b0a20860ec77c43a6f734805e0dec5, type: 3}
   Des: ArmyBase
   BuildName: 
-  CommandCount: 2
+  CommandCount: 3
   type: 4

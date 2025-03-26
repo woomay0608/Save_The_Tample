@@ -68,7 +68,7 @@ public class Friends : MonoBehaviour
         Dir =Dir.normalized;
 
         
-        GameObject bullet = Instantiate(Bullet, transform.position + transform.forward *2f + transform.up *0.5f, Quaternion.identity);
+        GameObject bullet = Instantiate(Bullet, transform.position + transform.forward *3f + transform.up *0.5f, Quaternion.identity);
         bullet.transform.parent = transform;
         bullet.GetComponent<Rigidbody>().AddForce(Dir*10f, ForceMode.Impulse);
     }

@@ -52,7 +52,6 @@ public class FriendsStat : MonoBehaviour
 
 
         AllAttackCoolTime = friends.Getfriends().AttackCoolTime - EquipCool;
-
         AllAttackCoolTime = Mathf.Max(1, AllAttackCoolTime);
         AllDamage = friends.Getfriends().Damage + equipAttack;
         AllSpeed = friends.Getfriends().Speed + equipSpeed;

@@ -55,7 +55,7 @@ public class MeleeAttackState : AttackState
                 }
                 else
                 {
-                    stateMachine.ChangeState(stateMachine.idleState);
+                    stateMachine.ChangeState(stateMachine.chasingState);
                 }
             }
         }
@@ -63,7 +63,7 @@ public class MeleeAttackState : AttackState
         {
             stateMachine.friends.IsInRange = false;
             stateMachine.friends.IsAttacking = false;
-            stateMachine.ChangeState(stateMachine.idleState);
+            stateMachine.ChangeState(stateMachine.chasingState);
         }
     }
     

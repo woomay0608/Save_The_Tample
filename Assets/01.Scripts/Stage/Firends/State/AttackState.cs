@@ -28,7 +28,7 @@ public class AttackState : BaseState
         }
         else
         {
-            stateMachine.ChangeState(stateMachine.idleState);
+            stateMachine.ChangeState(stateMachine.chasingState);
         }
     }
 
@@ -43,7 +43,8 @@ public class AttackState : BaseState
         base.Update();
         if (stateMachine.friends.Target == null)
         {
-            stateMachine.ChangeState(stateMachine.chasingState);
+            stateMachine.chasingState.MoveOtherPosition();
+ 
         }
         else
         {

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class ChasingState : BaseState
 {
 
-    float MoveCoolTime = 7f;
+    float MoveCoolTime = 3f;
     
     public ChasingState(StateMachine stateMachine) : base(stateMachine)
     {
@@ -42,19 +42,23 @@ public class ChasingState : BaseState
         }
 
         time += Time.deltaTime;
-        if(time > MoveCoolTime && !stateMachine.friends.IsAttacking) 
+
+        MoveOtherPosition();
+    }
+
+
+    public void MoveOtherPosition()
+    {
+        if (time > MoveCoolTime && !stateMachine.friends.IsAttacking)
         {
             time -= MoveCoolTime;
             FindNewLocation();
             Debug.Log("HI");
         }
-
     }
 
 
-
-
-    private void FindNewLocation()
+    public void FindNewLocation()
     {
 
         NavMeshHit nav;
@@ -67,7 +71,7 @@ public class ChasingState : BaseState
         }
         else
         {
-
+            Debug.Log("JeJari");
             stateMachine.friends.meshAgent.SetDestination(stateMachine.friends.meshAgent.transform.position);
         }
     }

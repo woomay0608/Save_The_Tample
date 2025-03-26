@@ -39,6 +39,16 @@ public class Enemy : MonoBehaviour
         {
             other.GetComponentInParent<Friends>().Target = null;
             Destroy(gameObject);
+
+
+            PlayerDataManager.Instance.PlayerInstance.Money += 100;
+
+            if(Random.Range(0,100) < 20)
+            {
+                PlayerDataManager.Instance.PlayerInstance.Diamond += 1;
+                transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+            }
+
         }
     }
 

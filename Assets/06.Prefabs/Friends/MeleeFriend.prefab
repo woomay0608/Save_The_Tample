@@ -258,6 +258,8 @@ MonoBehaviour:
   Target: {fileID: 0}
   IsInRange: 0
   IsAttacking: 0
+  IsRange: 0
+  Bullet: {fileID: 0}
   equipList: []
   FriendsSo: {fileID: 11400000, guid: cb847acc8d509e346842bf7eaaedf557, type: 2}
   FriendsStat: {fileID: 0}

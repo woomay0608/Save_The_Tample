@@ -57,7 +57,7 @@ public class RangeAttackState : AttackState
             }
             else
             {
-                stateMachine.ChangeState(stateMachine.idleState);
+                stateMachine.ChangeState(stateMachine.chasingState);
             }
         }
     }

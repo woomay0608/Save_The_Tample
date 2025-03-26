@@ -48,8 +48,6 @@ public class Friends : MonoBehaviour
     {
         stateMachine.Update();
     }
-
-
     public FriendSo Getfriends()
     {
         return FriendsSo;
@@ -70,7 +68,7 @@ public class Friends : MonoBehaviour
         
         GameObject bullet = Instantiate(Bullet, transform.position + transform.forward *3f + transform.up *0.5f, Quaternion.identity);
         bullet.transform.parent = transform;
-        bullet.GetComponent<Rigidbody>().AddForce(Dir*10f, ForceMode.Impulse);
+        bullet.GetComponent<Rigidbody>().AddForce(Dir*15f, ForceMode.Impulse);
     }
 
 }

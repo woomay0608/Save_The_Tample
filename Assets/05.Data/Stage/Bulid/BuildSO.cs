@@ -43,37 +43,39 @@ public class BuildSO : ScriptableObject
 
 
 
-    [Serializable]
-    public class Command
+[Serializable]
+public class Command
+{
+    [Header("Lock")]
+    public bool IsLock;
+    public string LockText;
+    public float LockMoney;
+    public bool IsDiamond;
+    [Header("CoolTime")]
+    public float Cooltime;
+    public float CurCooltime;
+    public bool IsCoolTime;
+    public bool IsCoolTimePassed;
+
+    public string MethodName;
+    public Action action;
+
+
+
+    public Command(bool IsLock, string Locktext, float LockMoney, float CoolTime, bool IsCoolTime, string MethodName, Action action, bool Isdia = false)
     {
-        [Header("Lock")]
-        public bool IsLock;
-        public string LockText;
-        public float LockMoney;
-        [Header("CoolTime")]
-        public float Cooltime;
-        public float CurCooltime;
-        public bool IsCoolTime;
-        public bool IsCoolTimePassed;
-
-        public string MethodName;
-        public Action action;
-
-
-
-        public Command(bool IsLock, string Locktext, float LockMoney, float CoolTime, bool IsCoolTime, string MethodName, Action action)
-        {
-            this.IsLock = IsLock;
-            this.LockText = Locktext;
-            this.LockMoney = LockMoney;
-            Cooltime = CoolTime;
-            CurCooltime = 0f;
-            IsCoolTimePassed = false;
-            this.IsCoolTime = IsCoolTime;
-            this.MethodName = MethodName;
-            this.action = action;
-        }
+        this.IsLock = IsLock;
+        this.LockText = Locktext;
+        this.LockMoney = LockMoney;
+        IsDiamond = Isdia;
+        Cooltime = CoolTime;
+        CurCooltime = 0f;
+        IsCoolTimePassed = false;
+        this.IsCoolTime = IsCoolTime;
+        this.MethodName = MethodName;
+        this.action = action;
     }
+}
 
 
 

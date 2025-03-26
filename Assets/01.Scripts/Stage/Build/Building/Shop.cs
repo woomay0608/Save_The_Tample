@@ -13,14 +13,9 @@ public class Shop : Building
         //bool IsLock, string Locktext, float LockMoney, float CoolTime, string CoolTimeText, bool IsCoolTime, string MethodName, Action action)
 
         buildSO.DicCommand[buildSO.type].Add(new Command(false, string.Empty, 0, 0, false, "Info", Info));
-        buildSO.DicCommand[buildSO.type].Add(new Command(true, "500G", 500, 0, false, "Shoes", InstantiateShoes));
-        buildSO.DicCommand[buildSO.type].Add(new Command(true, "500G", 500, 0, false, "Glove", InstantiateGlove));
-        buildSO.DicCommand[buildSO.type].Add(new Command(true, "500G", 500, 0, false, "Potion", InstantiatePotion));
-
-
-        //buildSO.DicCommand[buildSO.type].Add(new Command(false, string.Empty, 0, 0, string.Empty, false, "Info", Info));
-        //buildSO.DicCommand[buildSO.type].Add(new Command(false, string.Empty, 0, 0, string.Empty, false, "Info", Info));
-        //buildSO.DicCommand[buildSO.type].Add(new Command(false, string.Empty, 0, 0, string.Empty, false, "Info", Info));
+        buildSO.DicCommand[buildSO.type].Add(new Command(true, "Speed Equip 500G", 500, 0, false, "Shoes", InstantiateShoes));
+        buildSO.DicCommand[buildSO.type].Add(new Command(true, "Damage Equip 500G", 500, 0, false, "Glove", InstantiateGlove));
+        buildSO.DicCommand[buildSO.type].Add(new Command(true, "CoolTime Equip 500G", 500, 0, false, "Potion", InstantiatePotion));
 
     }
 

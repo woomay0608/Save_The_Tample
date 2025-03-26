@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +20,8 @@ public class FriendsManager : MonoBehaviour
 
 
     public GameObject FriendsPrefabs;
+
+    public List<GameObject> FriendsPrefabsList;
     public List<Friends> Friends;
 
     public void SetFriends(int Count)
@@ -38,6 +39,12 @@ public class FriendsManager : MonoBehaviour
             GameObject Prefabs = Instantiate(FriendsManager.Instance.FriendsPrefabs);
             Prefabs.transform.position = vector3[Random.Range(0, vector3.Length)];
         }
+    }
+
+
+    public void ChangeFriends(int Index)
+    {
+        FriendsPrefabs = FriendsPrefabsList[Index];
     }
 
 }

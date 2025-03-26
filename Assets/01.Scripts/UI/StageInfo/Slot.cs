@@ -48,8 +48,16 @@ public class Slot : MonoBehaviour
         LockButton.onClick.RemoveAllListeners();
         ActiveButton.onClick.RemoveAllListeners();
         Lock.gameObject.SetActive(command.IsLock);
-        Locktext.text = command.LockText;
 
+        if (command.IsDiamond)
+        {
+            Locktext.text = command.LockText;
+            Locktext.color = new Color(30f / 255f, 150f / 255f, 1f);
+        }
+        else
+        {
+            Locktext.text = command.LockText;
+        }
 
         LockButton.onClick.AddListener(() => LockOpen(command));
 
@@ -67,12 +75,26 @@ public class Slot : MonoBehaviour
 
     public void LockOpen(Command command)
     {
-        if (PlayerDataManager.Instance.PlayerInstance.Money > command.LockMoney)
+        if (command.IsDiamond)
         {
-            PlayerDataManager.Instance.PlayerInstance.Money -= (int)command.LockMoney;
-            command.IsLock = false;
-            Lock.gameObject.SetActive(command.IsLock);
+            if (PlayerDataManager.Instance.PlayerInstance.Diamond > command.LockMoney)
+            {
+                PlayerDataManager.Instance.PlayerInstance.Diamond -= (int)command.LockMoney;
+                command.IsLock = false;
+                Lock.gameObject.SetActive(command.IsLock);
+            }
         }
+        else
+        {
+
+            if (PlayerDataManager.Instance.PlayerInstance.Money > command.LockMoney)
+            {
+                PlayerDataManager.Instance.PlayerInstance.Money -= (int)command.LockMoney;
+                command.IsLock = false;
+                Lock.gameObject.SetActive(command.IsLock);
+            }
+        }
+
     }
 
     public void Cooltiome(Command command)

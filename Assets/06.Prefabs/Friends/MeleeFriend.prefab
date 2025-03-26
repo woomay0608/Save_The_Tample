@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 3238000816127771285}
   - component: {fileID: 4454975335944185883}
   m_Layer: 0
-  m_Name: Friends
+  m_Name: MeleeFriend
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
